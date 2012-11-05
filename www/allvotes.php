@@ -3,6 +3,7 @@
 </head>
 <body>
 	<h2>Список голосов</h2>
+    <style>td,th{border:1px solid black;}table{border-collapse:collapse;}</style>
     <table><tr><th>Секретный код</th><th>Голос</th><th>Отклонен</th></tr>
  	<?
 		mysql_connect('localhost','root','');
