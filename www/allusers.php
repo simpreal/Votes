@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
 </head>
 <body>
 	<h2>Список участников</h2>
     <style>td,th{border:1px solid black;}table{border-collapse:collapse;}</style>
     <table><tr><th>Имя</th><th>Отклонен</th></tr>
  	<?
-		mysql_connect('localhost','root','');
-		mysql_select_db('votes');
+		include "connect.php";
 		$rez=mysql_query('SELECT PublicName, IncorrectFlag FROM users ORDER BY ID');
    		if($num=mysql_num_rows($rez)){
 			for($i=0;$i<$num; $i++){

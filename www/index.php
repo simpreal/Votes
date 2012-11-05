@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+<meta content="text/html; charset=utf-8" http-equiv="content-type">
 <title>Система голосования стоимостью в $10</title>
 </head>
 <body>
@@ -21,9 +23,7 @@
 			else{
 				$_POST['PublicName']=strtolower($_POST['PublicName']);
 				$SQLPublicName=mysql_escape_string($_POST['PublicName']);
-			
-				mysql_connect('localhost','root','');
-				mysql_select_db('votes');
+				include "connect.php";
 				$rez=mysql_query('SELECT GroupCode FROM users WHERE IncorrectFlag=0 AND PublicName="'.$SQLPublicName.'" LIMIT 1');
 				if(mysql_num_rows($rez)>0){
 					$messages='Для вас уже была сгенерированна группа';
@@ -85,8 +85,7 @@
 				$SQLGroupCode=mysql_escape_string($_POST['GroupCode']);
 				$SQLSecretCode=mysql_escape_string($_POST['SecretCode']);
 			
-				mysql_connect('localhost','root','');
-				mysql_select_db('votes');
+				include "connect.php";
 				$rez=mysql_query('SELECT COUNT(GroupCode) FROM users WHERE IncorrectFlag=0 AND GroupCode="'.$SQLGroupCode.'"');
 				if(mysql_result($rez,0)==0){
 					$messages2='Эта группа не зарегестрированна';
